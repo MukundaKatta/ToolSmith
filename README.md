@@ -1,53 +1,53 @@
-# 🔥 ToolSmith
+# ToolSmith — Dynamic Tool Registry. Dynamic tool creation and registry for LLM agents
 
-> Dynamic tool creation and registry for LLM agents
+Dynamic Tool Registry. Dynamic tool creation and registry for LLM agents. ToolSmith gives you a focused, inspectable implementation of that idea.
 
-[![CI](https://github.com/MukundaKatta/ToolSmith/actions/workflows/ci.yml/badge.svg)](https://github.com/MukundaKatta/ToolSmith/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)]()
+## Why ToolSmith
 
-## What is ToolSmith?
-ToolSmith is a tool registry and execution framework for LLM agents. Define tools with JSON schemas, register them at runtime, validate inputs, and execute them safely — all with built-in sandboxing and audit logging.
+ToolSmith exists to make this workflow practical. Dynamic tool registry. dynamic tool creation and registry for llm agents. It favours a small, inspectable surface over sprawling configuration.
 
-## ✨ Features
-- ✅ JSON Schema-based tool definitions
-- ✅ Runtime tool registration and discovery
-- ✅ Input validation against schemas
-- ✅ Execution sandboxing with timeouts
-- ✅ Audit logging of all tool calls
-- 🔜 Tool composition (chain tools together)
-- 🔜 Natural language tool creation
+## Features
 
-## 🚀 Quick Start
+- `ToolStatus` — exported from `src/toolsmith/core.py`
+- `ToolResult` — exported from `src/toolsmith/core.py`
+- `Tool` — exported from `src/toolsmith/core.py`
+- Included test suite
+- Dedicated documentation folder
+
+## Tech Stack
+
+- **Runtime:** Python
+
+## How It Works
+
+The codebase is organised into `docs/`, `src/`, `tests/`. The primary entry points are `src/toolsmith/core.py`, `src/toolsmith/__init__.py`. `src/toolsmith/core.py` exposes `ToolStatus`, `ToolResult`, `Tool` — the core types that drive the behaviour.
+
+## Getting Started
+
 ```bash
-pip install toolsmith-ai
+pip install -e .
 ```
+
+## Usage
+
 ```python
-from toolsmith import ToolRegistry, tool
+from toolsmith.core import ToolStatus
 
-registry = ToolRegistry()
-
-@tool(name="calculator", description="Perform math operations")
-def calculator(expression: str) -> float:
-    return eval(expression)  # sandboxed in production
-
-registry.register(calculator)
-result = registry.execute("calculator", {"expression": "2 + 2"})
+instance = ToolStatus()
+# See the source for the full API
 ```
 
-## 🏗️ Architecture
-```mermaid
-graph TD
-    A[Tool Definition] --> B[Schema Validator]
-    B --> C[Tool Registry]
-    C --> D{Execute}
-    D --> E[Sandbox]
-    E --> F[Result]
-    D --> G[Audit Log]
+## Project Structure
+
 ```
-
-## 📖 Inspired By
-Inspired by OpenAI's function calling and Anthropic's tool use patterns, but built as a standalone framework for any agent system.
-
----
-**Built by [Officethree Technologies](https://github.com/MukundaKatta)** | Made with ❤️ and AI
+ToolSmith/
+├── .env.example
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
+├── docs/
+├── pyproject.toml
+├── src/
+├── tests/
+```
