@@ -1,6 +1,6 @@
 # ToolSmith — Dynamic Tool Registry. Dynamic tool creation and registry for LLM agents
 
-Dynamic Tool Registry. Dynamic tool creation and registry for LLM agents. ToolSmith gives you a focused, inspectable implementation of that idea.
+Dynamic Tool Registry. Dynamic tool creation and registry for LLM agents.
 
 ## Why ToolSmith
 
